@@ -1,3 +1,3 @@
 # Homework
-no chatgpt only pi.ai
-My homework here 
+no chatgpt only pi.ai \n
+My homework here
