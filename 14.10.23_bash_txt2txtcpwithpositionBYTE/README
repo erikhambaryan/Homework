@@ -6,3 +6,5 @@ Here is the workflow of the code.
 3) outpasted - Target location where to paste (contains 1-200).
 4) outpasted_reserve_for_testing - A reserve for when the "outpasted" file gets damaged this is the replacement.
 5) clone_wars - BASH SCRIPT THAT AUTOMATICALY REPLACES "outpasted" WITH "outpasted_reserve_for_testing" TO SPEED UP MY TESTS (also contains 1-200).
+
+I am sorry, but due to a missunderstanding this code was supposed to be written in C++ instead of BASH. I'll reupload if i do it in time.
