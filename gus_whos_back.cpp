@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
 
-void findMinMax(int a, int b, int c) {
-    int minval=min(min(a, b), c);
-    int maxval=max(max(a, b), c);
+void kgtnem(int a, int e, int u) {
+    int maxavat=max(max(a, e), u);
+    int miniven=min(min(a, e), u);
+    
 
-    cout<<"min-"<<minval<<", max-"<<maxval<<endl;
+    cout<<"poqrot="<<miniven<<", metsot="<<maxavat<<endl;
 }
 int main(int argc, char* argv[]) {
     if(argc != 4) {
-        cout<<"Usage: ./program_name a b c"<<endl;
         return 1;
     }
     int a=atoi(argv[1]);
-    int b=atoi(argv[2]);
-    int c=atoi(argv[3]);
-    findMinMax(a, b, c);
+    int e=atoi(argv[2]);
+    int u=atoi(argv[3]);
+    kgtnem(a, e, u);
     return 0;
 }
