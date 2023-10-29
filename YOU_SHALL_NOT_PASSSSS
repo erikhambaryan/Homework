@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+int main(int argc, char* argv[]){
+    if(argc!=2){
+
+
+        cout<<"Use:"<<argv[0]<<"dis"<<endl;
+        return 1;
+    }
+    ifstream file(argv[1]);
+    if(!file){
+        cerr<<"errrrrrrrrrrr"<<endl;
+        return 1;
+    }
+    cout<<file.rdbuf();
+    return 0;
+}
