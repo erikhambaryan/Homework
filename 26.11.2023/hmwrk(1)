@@ -1,0 +1,60 @@
+#include <iostream>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+
+int main() {
+    int pipe_fd[2];
+
+    pid_t pid1, pid2;
+    pid1 = fork();
+
+    if (pid1 < 0) {
+        std::cerr << "ARAJIN EREXEN QYAL ER :) " << std::endl;
+        return 1;
+    }
+    else if (pid1 == 0) {
+
+        pid_t ownPID = getpid();
+        close(pipe_fd[0]);
+        write(pipe_fd[1], &ownPID, sizeof(ownPID));
+        close(pipe_fd[1]);
+        return 0;
+    }
+    else{
+
+        pid2 = fork();
+
+        if (pid2 < 0) {
+            std::cerr << "ERKRORDNEL ARA ????? " << std::endl;
+            return 1;
+        } else if (pid2 == 0) {
+
+            pid_t ownPID = getpid();
+            close(pipe_fd[0]);
+            write(pipe_fd[1], &ownPID, sizeof(ownPID));
+            close(pipe_fd[1]);
+            return 0;
+        } else {
+
+            close(pipe_fd[1]);
+
+            pid_t pid_from_child1, pid_from_child2;
+
+
+            read(pipe_fd[0], &pid_from_child1, sizeof(pid_from_child1));
+            read(pipe_fd[0], &pid_from_child2, sizeof(pid_from_child2));
+
+            std::cout << "TSNOX" << getpid() << std::endl;
+            std::cout << "UNO_PID_LA_KID" << pid_from_child1 << std::endl;
+            std::cout << "DUO_PID_LA_KID" << pid_from_child2 << std::endl;
+
+            close(pipe_fd[0]);
+            wait(NULL);
+            wait(NULL);
+        }
+    }
+
+    return 0;
+}
