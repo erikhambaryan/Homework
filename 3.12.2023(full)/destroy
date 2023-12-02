@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+int main() {
+    key_t key = ftok("shmfile", 65);
+
+    int shmid = shmget(key, 0, 0666);
+
+    shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
+}
