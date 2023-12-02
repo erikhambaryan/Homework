@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SIZE 100
+
+int main() {
+    int shmid;
+    key_t key = ftok("shmfile", 65);
+
+    shmid = shmget(key, SIZE * sizeof(int), 0666);
+
+    int *shared_memory = (int *)shmat(shmid, (void *)0, 0);
+
+    int N;
+    printf("Zuig te voch kasi mer korispondety: ");
+    scanf("%d", &N);
+
+    // Implement checking whether a number is prime using the sieve of Eratosthenes
+
+    // Placeholder code
+    if (shared_memory[N] == N) {
+        printf("Nien\n");
+    } else {
+        printf("JA\n");
+    }
+
+    shmdt(shared_memory);
+
+    return 0;
+}
